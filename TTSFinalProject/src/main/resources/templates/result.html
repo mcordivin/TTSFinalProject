@@ -1,13 +1,12 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html xmlns="http://www.thymeleaf.org">
 <head>
 	<meta charset="UTF-8">
-	<title>Home Page</title>
+	<title>Result</title>
 	<link rel="stylesheet" href="/style.css">
 </head>
-<body>
-<h1>Home page!</h1>
-<h3>Welcome to your ToDo Application :)</h3>
 <div th:insert="fragments/navbar"></div>
+<body>
+	<h1><div th:text="${message}"></div></h1>
 </body>
 </html>

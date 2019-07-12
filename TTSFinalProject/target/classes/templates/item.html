@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+	<meta charset="UTF-8">
+	<title>One Item</title>
+	<link rel="stylesheet" href="/style.css">
+</head>
+<div th:insert="fragments/navbar"></div>
+<body>
+<h1>Item</h1> 
+	<div th:text="${item.title}"></div>
+	<div th:text="${item.description}"></div>
+	<div th:text="${item.creator}"></div>
+	<div th:text="${item.status}"></div> <br>
+	
+	<form th:object="${item}" th:action="@{/item/} + ${item.id}" th:method="delete">
+    	<input type="submit" value="delete">
+    </form>
+    <br>
+	<br>
+    <a href="/update"><button>update</button></a>
+</body>
+</html>

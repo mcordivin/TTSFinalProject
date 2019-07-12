@@ -85,10 +85,10 @@ public class TTSFinalProjectServiceUnitTest {
 		assertEquals(toDoList, found);
 	}
 	
-	@Test
-	public void whenGivenNewItem_ReturnSuccessMessage() {
-		Mockito.when(itemRepository.save(createRepoTest)).thenReturn(createRepoTest);
-		Item found = itemService.saveEntity(createRepoTest);
-		assertEquals(createRepoTest, found);
-	}
+//	@Test
+//	public void whenGivenNewItem_ReturnSuccessMessage() {
+//		Mockito.when(itemRepository.save(createRepoTest)).thenReturn(createRepoTest);
+//		Item found = itemService.saveEntity(createRepoTest);
+//		assertEquals(createRepoTest, found);
+//	}
 }

@@ -37,7 +37,7 @@ public class ItemRestController {
 		return item;
 	}
 	
-	@PutMapping(value="/updateByStatus")
+	@PutMapping(value="/updateById")
 	public Item updateItemById(Long id, Item item) {
 		itemService.updateEntityById(id, item);
 		return item;

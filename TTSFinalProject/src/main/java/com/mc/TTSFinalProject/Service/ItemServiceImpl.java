@@ -23,11 +23,15 @@ public class ItemServiceImpl implements ItemService {
 	public List<Item> findByStatus(Boolean status) {
 		return itemRepository.findAllByStatus(status);
 	}
+	
+	@Override
+	public Item findItemById(Long id) {
+		return itemRepository.findItemById(id);
+	}
 
 	@Override
-	public Item saveEntity(Item item) {
+	public void saveEntity(Item item) {
 		itemRepository.save(item);
-		return item;
 	}
 
 	@Override

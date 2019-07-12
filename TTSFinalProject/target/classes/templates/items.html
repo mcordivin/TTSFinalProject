@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+	<meta charset="UTF-8">
+	<title>All Posts</title>
+	<link rel="stylesheet" href="/style.css">
+</head>
+<div th:insert="fragments/navbar"></div>
+<body>
+<h1>All Items!</h1> 
+	<div th:each ="allItems: ${allItems}">
+	<a th:href="@{/item/} + ${allItems.id}">
+		<div th:text="${allItems.title}"></div>
+		<div th:text="${allItems.description}"></div>
+		<div th:text="${allItems.creator}"></div>
+		<div th:text="${allItems.status}"></div>
+	</a>
+	</div>
+	
+</body>
+</html>
