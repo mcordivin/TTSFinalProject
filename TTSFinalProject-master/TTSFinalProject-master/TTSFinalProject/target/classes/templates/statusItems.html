@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+	<meta charset="UTF-8">
+	<title>Status Posts</title>
+	<link rel="stylesheet" href="/style.css">
+</head>
+<div th:insert="fragments/navbar"></div>
+<body>
+<h1>Status Items!</h1> 
+	<h3>Here are your items:</h3>
+	<div th:each ="statusItem: ${statusItem}">
+	<a th:href="@{/item/} + ${statusItem.id}">
+		<div th:text="${statusItem.title}"></div>
+		<div th:text="${statusItem.description}"></div>
+		<div th:text="${statusItem.creator}"></div>
+		<div th:text="${statusItem.status}"></div>
+	</a>
+	</div>
+	
+</body>
+</html>
