@@ -10,13 +10,21 @@
 <center><h1>All Items!</h1></center>
 	<h3>Here are all of your items:</h3>
 	<div th:each ="allItems: ${allItems}">
+	<br></br>
 	<a th:href="@{/item/} + ${allItems.id}">
 		<div th:text="${allItems.title}"></div>
 		<div th:text="${allItems.description}"></div>
 		<div th:text="${allItems.creator}"></div>
-		<div th:text="${allItems.status}"></div>
+		<div th:if="${allItems.status}">Completed</div>
+		<div th:unless="${allItems.status}">ToDo</div>
 	</a>
 	</div>
+	<br>
+	<br>
+	<form action="#" th:action="@{/deleteAll}" th:method="delete">
+		<input type="hidden" name="_method" value="delete" />
+		<button type="submit" onClick="return confirm('Are you sure?')">delete all</button>
+	</form>
 
 </body>
 </html>

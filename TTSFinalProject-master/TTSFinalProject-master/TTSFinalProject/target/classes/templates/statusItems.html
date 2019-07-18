@@ -7,16 +7,24 @@
 </head>
 <div th:insert="fragments/navbar"></div>
 <body>
-<h1>Status Items!</h1> 
-	<h3>Here are your items:</h3>
-	<div th:each ="statusItem: ${statusItem}">
+	<center><h1>Status Items</h1></center>
+	<h3>Here are all of your items:</h3>
+	<br>
+	<div th:each="statusItem: ${statusItem}">
 	<a th:href="@{/item/} + ${statusItem.id}">
 		<div th:text="${statusItem.title}"></div>
 		<div th:text="${statusItem.description}"></div>
 		<div th:text="${statusItem.creator}"></div>
-		<div th:text="${statusItem.status}"></div>
+		<div th:if="${statusItem.status}">Completed</div>
+		<div th:unless="${statusItem.status}">ToDo</div>
 	</a>
+	<br>
 	</div>
-	
+
+	<form action="#" th:action="@{/deleteByStatus}" th:method="delete">
+		<input type="hidden" name="_method" value="delete" />
+		<button type="submit" onClick="return confirm('Are you sure?')">delete items by status</button>
+	</form>
+
 </body>
 </html>

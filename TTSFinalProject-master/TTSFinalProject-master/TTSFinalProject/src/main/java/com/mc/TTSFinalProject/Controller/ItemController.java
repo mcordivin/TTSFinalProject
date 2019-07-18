@@ -42,7 +42,7 @@ public class ItemController {
 	@GetMapping(value="/items/{status}")
 	public String completedItems (@PathVariable Boolean status, Model model) {
 		List<Item> statusItem = itemService.findByStatus(status);
-		model.addAttribute(statusItem);
+		model.addAttribute("statusItem", statusItem);
 		return "statusItems";	
 	}
 	
@@ -59,9 +59,10 @@ public class ItemController {
 	}
 	
 	@DeleteMapping(value="/deleteAll")
-	public String deleteAll() {
+	public String deleteAll(Model model) {
 		itemService.deleteAll();
-		return "items";
+		model.addAttribute("message", "All items deleted!");
+		return "result";
 	}
 	
 //	@DeleteMapping(value="/item/{id}")
@@ -71,17 +72,18 @@ public class ItemController {
 //		return "result";
 //	}
 	
-	@DeleteMapping(value="/item/{id}")
-	public String deleteItemById(@PathVariable("id") Long id, Model model) {
+	@DeleteMapping(value="/deleteItemById")
+	public String deleteItemById(Long id, Model model) {
 		itemService.deleteById(id);
 		model.addAttribute("message", "Item deleted!");
 		return "result";
 	}
 	
 	@DeleteMapping(value="/deleteByStatus")
-	public String deleteOne(Boolean status) {
+	public String deleteOne(Boolean status, Model model) {
 		itemService.deleteByStatus(status);
-		return "item";
+		model.addAttribute("message", "Items deleted!");
+		return "result";
 	}	
 	
 	@GetMapping(value="/update/{id}")
@@ -91,18 +93,11 @@ public class ItemController {
 		return "update";
 	}
 	
-	@PostMapping(value="/update/{id}")
+	@PutMapping(value="/update/{id}")
 	public String updateItemById(@PathVariable Long id, Item item, Model model) {
 		itemService.updateEntityById(id, item);
 		model.addAttribute("message", "Item updated!");
 		return "result";
 	}
-	
-//	@PostMapping(value="/update/")
-//	public String updateItemById(Item item, Model model) {
-//		itemService.updateEntityById(item);
-//		model.addAttribute("message", "Item updated!");
-//		return "result";
-//	}
-	
+
 }

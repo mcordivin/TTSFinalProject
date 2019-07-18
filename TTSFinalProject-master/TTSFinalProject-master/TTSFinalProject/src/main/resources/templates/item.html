@@ -12,31 +12,14 @@
 	<div th:text="${item.title}"></div>
 	<div th:text="${item.description}"></div>
 	<div th:text="${item.creator}"></div>
-	<div th:text="${item.status}"></div> <br>
+	<div th:if="${item.status}">Completed</div>
+	<div th:unless="${item.status}">ToDo</div>
 	
-   	<!-- button 1
-   	<form th:object="${item}" th:action="@{/item/} + ${item.id}" th:method="delete">
-    	<input type="submit" value="delete">
-    </form>
-    button2
-    <form action="#" th:action="@{'/delete/{id}'(id=${foo.id})}" th:method="delete" >
-  		<input type="hidden" name="_method" value="delete" />
-  		<button type="submit" id="submitButton"> </button>
-  	are you sure?
-  	<button type="submit" onClick="return confirm('Are you sure?')"/>
-  	
-  	button3
-  		<form th:object="${item}" th:action="@{/item/} + ${item.id}" method="post">
-			<input type="submit" th:field="${item}">delete</input>
-		<button type="submit" onClick="return confirm('Are you sure?')"/>
-		</form>
-	</form>  
-	-->
-	
-	<form th:object="${item}" th:action="@{/item/} + ${item.id}" method="delete">
-		<input type="submit" value="delete" th:field="${item}" onClick="return confirm('Are you sure?')">
+	<br>
+	<form action="#" th:action="@{/deleteItemById}" th:method="delete">
+		<input type="hidden" name="_method" value="delete" />
+		<button type="submit" onClick="return confirm('Are you sure?')">delete</button>
 	</form>
-
     <br>
     <a th:href="@{/update/} + ${item.id}"><button>update</button></a>
 </body>

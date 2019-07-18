@@ -10,7 +10,7 @@
 	<div class="container">
 	<h1>Update Item</h1> <br>
 		<h3>Please update your items below.</h3>
-		<form action="#" th:action="@{/update/} + ${currentItem.id}" th:object="${item}" method="post">
+		<form action="#" th:action="@{/update/} + ${currentItem.id}" th:object="${item}" th:method="put">
     		<p>Title: <input type="text" th:field="*{title}" th:placeholder="${currentItem.title}"/></p>
         	<p>Description: <input type="text" th:field="*{description}" th:placeholder="${currentItem.description}"/></p>
         	<p>Creator: <input type="text" th:field="*{creator}" th:placeholder="${currentItem.creator}"/></p>
